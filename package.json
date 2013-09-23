@@ -1,0 +1,15 @@
+{
+  "name": "marionette-debug-server",
+  "description": "A HTTP server to receive log(screenshot) data form CI server.",
+  "version": "0.0.0",
+  "main": "index.js",
+  "scripts": {
+  	"test": "make"
+  },
+  "license": "Apache2",
+  "devDependencies": {
+  	"express": "~3.4.0",
+  	"dateformat": "~1.0.6-1.2.3",
+  	"ejs": "~0.8.4"
+  }
+}
