@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <title>Screenshot Images Roport</title>
+
+  <link href="../css/bootstrap.min.css" rel="stylesheet" />
+  <link href="../css/bootstrap-theme.min.css" rel="stylesheet" />
+
+  <style>
+  	body{
+  	  padding-top: 80px;
+  	}
+  </style>
+</head>
+
+<body>
+  <!-- Fixed navbar -->
+  <div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Marionette Debug DIFF Results</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <% for(var i = 0; i < results.length; i++) { %>
+    <div class="panel panel-info">
+      <div class="panel-heading"><%= results[i].description %></div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-4">
+            <h5><%= results[i].pic.first %></h5>
+            <img src="../logs/<%= results[i].pic.first %>">
+          </div>
+          <div class="col-md-4">
+            <% if(results[i].pic.second) { %>
+              <h5><%= results[i].pic.second %></h5>
+              <img src="../logs/<%= results[i].pic.second %>">
+            <% } else {%>
+              <h6>Wait for another version</h6>
+            <% } %>
+          </div>
+          <div class="col-md-4"> 
+            <% if(results[i].pic.diff) { %>
+              <h5><%= results[i].pic.diff %></h5>
+              <img src="../logs/<%= results[i].pic.diff %>">
+            <% } else {%>
+              <h6>Wait for another version</h6>
+            <% }%>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% } %>
+  </div> <!-- /container -->
+</body>
+
+</html>

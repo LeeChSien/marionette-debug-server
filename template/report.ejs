@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <title>Screenshot Images Roport</title>
+
+  <link href="../css/bootstrap.min.css" rel="stylesheet" />
+  <link href="../css/bootstrap-theme.min.css" rel="stylesheet" />
+
+  <style>
+  	body{
+  	  padding-top: 80px;
+  	}
+  </style>
+</head>
+
+<body>
+  <!-- Fixed navbar -->
+  <div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Marionette Debug Report</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <% for(var i = 0; i < results.length; i++) { %>
+    <% if(!results[i].pic[part])
+         continue; %>
+    <div class="panel panel-info">
+      <div class="panel-heading"><%= results[i].description %></div>
+        <div class="panel-body">
+        <h5><%= results[i].pic[part] %></h5>
+        <img src="../logs/<%= results[i].pic[part] %>">
+      </div>
+    </div>
+    <% } %>
+  </div> <!-- /container -->
+</body>
+
+</html>

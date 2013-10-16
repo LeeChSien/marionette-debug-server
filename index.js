@@ -1,4 +1,4 @@
-var DEFAULT_LOG_FILE_PATH = __dirname + '/logs',
+var PUBLIC_PATH = __dirname + '/public',
     DEFAULT_SERVER_PORT = 3000,
     express = require('express'),
     router = require('./router'),
@@ -9,8 +9,8 @@ var DEFAULT_LOG_FILE_PATH = __dirname + '/logs',
 
 // Setup the static file server.
 app.configure(function() {
-  app.use(express.static(DEFAULT_LOG_FILE_PATH));
-  app.use(express.directory(DEFAULT_LOG_FILE_PATH));
+  app.use(express.static(PUBLIC_PATH));
+  app.use(express.directory(PUBLIC_PATH));
 });
 
 // The router to handle the HTTP requests.
@@ -23,7 +23,7 @@ app.post('/screenshot', function(request, response) {
       httpHelper.responseMessage('fail', error);
       return;
     }
-    filename = router.screenshot(data, DEFAULT_LOG_FILE_PATH);
+    filename = router.screenshot(data, PUBLIC_PATH);
     httpHelper.responseMessage('success', filename);
   });
 });
