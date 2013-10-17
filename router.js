@@ -32,6 +32,8 @@ Router.prototype = {
     var LOG_PATH = public_path + '/logs',
         HTML_REPORT_PATH = public_path + '/html_report',
         HTML_DIFF_PATH = public_path + '/html_diff',
+        PDF_REPORT_PATH = public_path + '/pdf_report',
+        PDF_DIFF_PATH = public_path + '/pdf_diff',
         filename;
 
     if (!_filename) {
@@ -48,15 +50,21 @@ Router.prototype = {
     logReporter.exprotImage(data, LOG_PATH, filename, memoryPool);
 
     if(memoryPool.isDiffComplete()) {
-      logReporter.saveReport(HTML_REPORT_PATH,
+      logReporter.saveHtmlReport(HTML_REPORT_PATH,
         filename + 'report.html', memoryPool, 'second');
+      logReporter.savePDFReport(PDF_REPORT_PATH, LOG_PATH,
+        filename + 'report.pdf', memoryPool, 'second');
 
-      logReporter.saveDiff(HTML_DIFF_PATH,
+      logReporter.saveHtmlDiff(HTML_DIFF_PATH,
         filename + 'diff.html', memoryPool);
+      logReporter.savePDFDiff(PDF_DIFF_PATH, LOG_PATH,
+        filename + 'diff.pdf', memoryPool);
       memoryPool.clear();
     } else {
-      logReporter.saveReport(HTML_REPORT_PATH,
+      logReporter.saveHtmlReport(HTML_REPORT_PATH,
         filename + 'report.html', memoryPool, 'first');
+      logReporter.savePDFReport(PDF_REPORT_PATH, LOG_PATH,
+        filename + 'report.pdf', memoryPool, 'first');
     }
 
     return filename;
