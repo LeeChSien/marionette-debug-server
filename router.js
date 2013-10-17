@@ -1,9 +1,5 @@
 var REPORT_TEMPLATE_PATH = __dirname + '/template/report.ejs',
-<<<<<<< HEAD
-    DIFF_TEMPLATE_PATH   = __dirname + '/template/diff.ejs',
-=======
     DIFF_TEMPLATE_PATH = __dirname + '/template/diff.ejs',
->>>>>>> for_coding_style_solve
     dataFormat = require('dateformat'),
     uuid = require('node-uuid'),
     LogReporter = require('./lib/log_reporter'),
@@ -53,7 +49,7 @@ Router.prototype = {
 
     logReporter.exprotImage(data, LOG_PATH, filename, memoryPool);
 
-    if(memoryPool.isDiffComplete()) {
+    if (memoryPool.isDiffComplete()) {
       logReporter.saveHtmlReport(HTML_REPORT_PATH,
         filename + 'report.html', memoryPool, 'second');
       logReporter.savePDFReport(PDF_REPORT_PATH, LOG_PATH,
